@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Typing of the Dead: 16-Bit Slayer",
+  "description": "16ビット風レトロホラー格闘タイピングゲーム。RYUとなって地下鉄のゾンビに立ち向かえ！",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
