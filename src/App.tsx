@@ -1122,7 +1122,8 @@ export default function App() {
 
   return (
     <div 
-      className="h-screen w-screen max-h-screen overflow-hidden bg-[#0a0a0a] font-gothic text-white flex flex-col items-center justify-center p-2 selection:bg-red-900 relative select-none"
+      translate="no"
+      className="notranslate h-screen w-screen max-h-screen overflow-hidden bg-[#0a0a0a] font-gothic text-white flex flex-col items-center justify-center p-2 selection:bg-red-900 relative select-none"
       onClick={handleContainerClick}
     >
       {/* 隠しインプット：常にフォーカスを当ててタイピング検出 */}
@@ -1858,16 +1859,16 @@ export default function App() {
                 <motion.div 
                   animate={isMissShake ? { x: ["-50%", "-52%", "-48%", "-51%", "-49%", "-50.5%", "-49.5%", "-50%"] } : { x: "-50%" }}
                   transition={{ duration: 0.18, ease: "easeInOut" }}
-                  className={`absolute top-2 left-1/2 z-30 w-[96%] max-w-[460px] p-2.5 sm:p-3 rounded-lg overflow-hidden flex flex-col justify-between shadow-2xl border-2 transition-all duration-500 select-none ${isBossActive ? 'bg-gradient-to-br from-[#450a0a] via-[#880808] to-[#1c1917] border-red-500 shadow-[0_0_25px_rgba(239,68,68,0.6)] scale-102 font-bold' : 'wood-board border-[#2d1b18]'}`}
+                  className={`absolute top-2 left-1/2 z-30 w-[96%] max-w-[460px] sm:max-w-[620px] md:max-w-[760px] p-2.5 sm:p-4 rounded-lg overflow-hidden flex flex-col justify-between shadow-2xl border-2 transition-all duration-500 select-none ${isBossActive ? 'bg-gradient-to-br from-[#450a0a] via-[#880808] to-[#1c1917] border-red-500 shadow-[0_0_25px_rgba(239,68,68,0.6)] scale-102 font-bold' : 'wood-board border-[#2d1b18]'}`}
                 >
                   {/* 背景の血しぶき */}
                   <div className="absolute top-0 right-0 w-24 h-24 blood-splatter opacity-50 pointer-events-none" />
                   <div className="absolute bottom-0 left-0 w-28 h-28 blood-splatter opacity-35 pointer-events-none" />
 
                   {/* 情報ヘッダー */}
-                  <div className={`text-[10px] sm:text-xs font-press-start tracking-wider mb-2 uppercase z-10 flex items-center justify-center gap-1 text-shadow-glow transition-all duration-300 ${isBossActive ? 'text-yellow-400 animate-pulse' : 'text-zinc-300'}`}>
+                  <div className={`text-[10px] sm:text-sm md:text-base font-press-start tracking-wider mb-2 uppercase z-10 flex items-center justify-center gap-1 text-shadow-glow transition-all duration-300 ${isBossActive ? 'text-yellow-400 animate-pulse' : 'text-zinc-300'}`}>
                     <span className="text-red-500">⚠️ {isBossActive ? 'BOSS TARGET MEANING' : '☣'}</span>
-                    <span className="text-white font-bold text-xs sm:text-sm px-1 bg-black/35 rounded">{currentWord.meaning}</span>
+                    <span className="text-white font-bold text-xs sm:text-lg md:text-2xl px-2.5 py-1 bg-black/55 rounded border border-neutral-800 shadow-inner leading-relaxed">{currentWord.meaning}</span>
                     <span className="text-red-500">{isBossActive ? '⚠️' : '☣'}</span>
                   </div>
 
@@ -1918,13 +1919,17 @@ export default function App() {
                   </div>
 
                   {/* 出題ワード (大きく表示) */}
-                  <div className="font-press-start text-xl sm:text-3xl tracking-widest select-none z-10 my-2.5 break-all relative flex items-center justify-center gap-x-[1px] flex-wrap min-h-[44px]">
+                  <div 
+                    translate="no"
+                    className="notranslate font-press-start text-2xl sm:text-4xl md:text-5xl lg:text-[42px] tracking-widest select-none z-10 my-3 break-all relative flex items-center justify-center gap-x-[1px] flex-wrap min-h-[64px]"
+                  >
                     
                     {/* 飛び散るきらきらキーエフェクト */}
                     <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-visible z-30">
                       {typingEffects.map(eff => (
                         <motion.span
                           key={eff.id}
+                          translate="no"
                           initial={{ opacity: 1, scale: 1.5, y: 0, x: eff.x, rotate: 0 }}
                           animate={{ 
                             opacity: 0, 
@@ -1934,7 +1939,7 @@ export default function App() {
                             rotate: Math.random() * 360 - 180 
                           }}
                           transition={{ duration: 0.65, ease: "easeOut" }}
-                          className={`absolute font-press-start font-black text-xl sm:text-3xl ${
+                          className={`absolute notranslate font-press-start font-black text-2xl sm:text-4xl md:text-5xl ${
                             eff.isMiss 
                               ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.95)]' 
                               : 'text-yellow-400 drop-shadow-[0_0_8px_rgba(234,179,8,0.95)]'
@@ -1956,7 +1961,8 @@ export default function App() {
                         return (
                           <motion.span 
                             key={index}
-                            className="text-[#0a0a0a] bg-zinc-100 px-1.5 rounded mx-[2px] inline-block font-bold border-2 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                            translate="no"
+                            className="notranslate text-[#0a0a0a] bg-zinc-100 px-2 rounded mx-[3px] inline-block font-bold border-2 border-white shadow-[0_0_12px_rgba(255,255,255,0.8)]"
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ repeat: Infinity, duration: 0.6 }}
                           >
@@ -1967,7 +1973,8 @@ export default function App() {
                         return (
                           <span 
                             key={index} 
-                            className="text-white opacity-95 font-bold inline-block mx-[2px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            translate="no"
+                            className="notranslate text-white opacity-95 font-bold inline-block mx-[3px] drop-shadow-[0_3px_6px_rgba(0,0,0,0.85)]"
                           >
                             {char}
                           </span>
